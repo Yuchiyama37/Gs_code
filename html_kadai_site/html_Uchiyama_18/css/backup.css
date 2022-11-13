@@ -1,0 +1,108 @@
+.news-img-1{
+    text-align: left;
+}
+.news-1{
+    width:300px;
+    margin-right: none;
+    text-align: left;   
+}
+
+.news-img-2{
+    text-align: center;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.news-2{
+    width:300px;
+    text-align: justify;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.news-img-3{
+    text-align: center;
+}
+
+.news-3{
+    width:300px;
+    text-align: justify;
+    margin-left: ;
+}
+.news-text{
+    display:flex;
+    justify-content: center;
+}
+
+/* 問い合わせフォーム開始 */
+.form{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.name-box{
+    /* 名前＆カナの罫線 */
+    border-style: solid;
+    border-color:black;
+    border-right: #222222;
+}
+/* 漢字名前横並べ */
+.name{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-top: #222222;
+}
+
+.name-2{
+    align-items: center;
+    text-align: justify;
+}
+
+/* カナ横並び */
+.kana{
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* メール横並び */
+.mail-form{
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/* きっかけ横並び */
+.reason{
+    display:flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+/* テキストボックスとプルダウン */
+.form-parts{
+    width: 400px;
+    height: 36px;
+    align-items: flex-start;
+}
+
+.pulldown{
+    width: 400px;
+    height: 36px;
+    align-items: flex-start;
+    padding: none;
+}
+
+/* テキストエリア */
+.textarea{
+    width: 400px;
+    height: 108px;
+}
+
+.form-title{
+    width:240px;
+    height:36px;
+    margin-left: 16px;
+    text-align: left;
+}

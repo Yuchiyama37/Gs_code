@@ -1,0 +1,805 @@
+/* ここから下に記載していく */
+
+
+/* 全体設定 */
+
+.page{
+    width:1200px;
+    font-size: 100%; 
+    /* 指定なし＝16px x 62.5% = 10px */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 画像 */
+img{
+    height: auto;
+        /* レスポンシブにならない。。。なぜ */
+}
+
+
+.body{
+    color:#222222;
+    font-size: 1.6rem;
+}
+
+/* Header */
+
+/* ナビゲーション */
+.nav{
+    overflow:hidden;
+}
+
+.nav li{
+    float: left;
+    text-align: center;
+    font-size: 21px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.nav li a{
+    text-decoration: none;
+    color:black;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+
+.logo{
+    display:flex;
+    height:100%;
+    margin-top: 25px;
+}
+
+#nav{
+    display:flex;
+}
+
+
+
+/* メインヴィジュアル */
+.MV{
+    position: relative;
+}
+
+.site-title{
+    /* 画像の上に文字を載せる */
+    position: absolute;
+    top:45%;
+    left:50%;
+    margin-bottom: 30px;
+    text-align: center;     
+    transform:translate(-50%,-50%);
+    color:white;
+}
+
+.maintitle{
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom:30px;
+}
+.subtitle{
+    font-size: 25px;
+}
+
+/* Header End */
+
+/* ABOUT */
+.ABOUT{
+    margin:auto;
+    text-align: center;
+}
+
+.ABOUT h1{
+    font-weight: bold;
+    font-size: 24px;
+    color:#ffd61a;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+.ABOUT h2{
+    font-weight: 18px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.ABOUT p{
+    font-weight: 16px;
+    text-align: center;
+    margin: 40px 40px 0 0;
+    line-height: 2;
+}
+.about img{
+    width:300px;
+}
+.about-img{
+    display: flex;
+    flex-wrap: warp;
+    justify-content: center;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-top:80px;
+    padding-left:0px;
+    padding-right: 0px;
+    border:0px;
+}
+
+/* COURSE */
+
+.COURSE{
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.COURSE h1{
+    font-size: 18px;
+    margin:60px 30px 0px 0px;
+    margin-bottom: 30px;
+
+}
+
+.explain{
+    margin-bottom:60px;
+}
+
+.COURSE img{
+    margin:none;
+    padding:none;
+    width:600px;
+    
+}
+/* farm:本格的な農地〜 */
+.farm{
+    width:1200px;
+    height:auto;
+    align-items: center;
+    /* alc = 上下位置を中央に */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fafafa;
+    display:flex;
+    flex-wrap: warp;
+    line-height:2;
+    text-align: justify;
+}
+.farm h2{
+    font-size: 22px;
+    font-weight: bold;
+    text-align:justify;
+    margin-bottom: 40px;
+    margin-right: auto;
+    width:480px;
+    /* 上 右 下 左 */
+}
+
+.farm-explain-text{
+    /* 項目見出しh2と説明文 */
+    width:480px;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+/* lesson:必要な知識も〜 */
+.lesson{
+    width:1200px;
+    height: 100%;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fafafa;
+    display:flex;
+    flex-wrap: warp;
+    line-height:2;
+    text-align: justify;
+}
+.lesson h2{
+    font-size: 22px;
+    font-weight: bold;
+    text-align:justify;
+    align-items:center;
+    margin-bottom: 40px;
+    width:480px;
+}
+
+.lesson-explain-text{
+    /* 項目見出しh2と説明文 */
+    width:480px;
+    justify-content: center;
+    margin-left: auto;
+}
+
+/* tasting:卒業制作は〜 */
+.tasting{
+    width:1200px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fafafa;
+    display:flex;
+    line-height:2;
+    text-align: justify;
+}
+.tasting h2{
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    width:480px;
+}
+
+.tasting-explain-text{
+    /* 項目見出しh2と説明文 */
+    width:480px;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+/* NEWS */
+.NEWS{
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.NEWS h1{
+    font-size: 18px;
+    color:#ffd61a;
+    margin-top:60px;
+    margin-bottom :30px;
+}
+
+.NEWS h2{
+    /* ニュース */
+    font-size: 16px;
+    margin-bottom: 60px;
+}
+
+.NEWS img{
+    width:300px;
+}
+
+.news-img{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;   
+}
+
+.news-img-2{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.NEWS h3{
+    text-align-last: left;
+    margin-top: 30px;
+    margin-bottom: 24px;
+}
+
+.news-text{
+    /* width: 300px; */
+    /* ここでwidth指定しても変わらない。なぜ？ */
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.news-details{
+    /* チーズアカデミー卒業生のコスゲ〜 */
+    width: 300px;
+    /* 均等割付け */
+    white-space: nowrap;
+    /* 折り返し禁止！！ */
+    line-height: 2;
+    /* 行間 = lh */
+    text-align: start;
+    /* 文章左揃え */
+}
+
+.news-2{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+
+.input-more{
+    width: 300px;
+    background: #ffd61a;
+    margin-top: 60px;
+    height: 60px;
+    border:none;
+    font-size: 18px;
+    color:wihte;
+    text-align: center;
+    cursor: pointer;
+}
+
+.input-more{
+    color:white;
+    /* なぜ一つ上のcolorが無効に？？ */
+}
+
+
+
+/* ACCESS */
+.ACCESS{
+    text-align: center;
+    margin-top: 60px;
+    background: #fafafa;
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ACCESS h1{
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 60px;
+    margin-bottom: 30px;
+}
+.ACCESS h2{
+    font-size: 16;
+    margin-bottom: 60px;
+}
+
+.googlemap{
+    width:1200px;
+    height: 300px;
+    margin-bottom: 60px;
+}
+
+/*  */
+.access-details{
+    /* 学校名、住所、〒、Tel、Fax、Mail */
+    margin-right: auto;
+    margin-left: auto;
+    /* 各項目で指定必要なのか？ページ全体で指定できていない？？ */
+}
+
+.ADDRESS h3{
+    height: 50px;
+    /* width:150px; */
+    /* text-align: start; */
+    /* h3タグでまとめて指定しても反映されない */
+}
+
+.ADDRESS h4{
+    height: 50px;
+    width:356;
+}
+
+.access-name{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.access-name-1{
+    /* 学校名 */
+    width:150px;
+    text-align: start;
+    align-items: flex-start;
+    
+}
+
+.access-name-2{
+    /* チーズアカデミー */
+    width:356px;
+    text-align: start;
+}
+
+/* 住所 */
+.address{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.address-1{
+    /* 事務所所在地 */
+    width:150px;
+    text-align: start;
+}
+
+.address-2{
+    /* 〒 */
+    width:356px;
+    text-align: start;
+}
+
+/* 電話番号 */
+.tel{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.tel-1{
+    /* Tel */
+    width:150px;
+    text-align: start;
+}
+
+.tel-2{
+    /* 03- */
+    width:356px;
+    text-align: start;
+}
+
+/* ファックス */
+.fax{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.fax-1{
+    /* Fax */
+    width:150px;
+    text-align: start;
+}
+
+.fax-2{
+    /* 03- */
+    width:356px;
+    text-align: start;
+}
+
+/* メール */
+.mail{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.mail-1{
+    /* MAIL */
+    width:150px;
+    text-align: start;
+}
+
+.mail-2{
+    /* dummy@ */
+    width:356px;
+    text-align: start;
+    margin-bottom: 60px;
+}
+
+
+
+/* CONTACT */
+.CONTACT{
+    text-align: center;
+}
+
+.CONTACT h1{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+/* 説明会お申し込み・〜 */
+.CONTACT h2{
+    margin-bottom: 60px;
+}
+/* ぜひ一度 */
+.Contact-p1{
+    margin-bottom: 30px;
+    line-height: 2;
+}
+
+/* 実在しません〜 */
+.Contact-p2{
+    margin-bottom: 70px;
+    line-height: 2;
+}
+
+/* 問い合わせフォーム開始 */
+
+.name-2{
+    height: 36px;
+    width: 240px;
+    text-align: left;
+    font-size: 20px;
+    padding-top: 6px;
+}
+
+.name-form{
+    box-sizing: border-box ;
+    height: 36px;
+    width: 400px;
+}
+
+.name{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 7px;
+}
+
+
+
+/* 横の罫線 */
+.name-border-top{
+    width: 800px;
+    border-top: 1px solid #bfbfbf;
+    justify-content: center;
+    margin-left:auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.name-border-bottom{
+    width: 800px;
+    border-top: 1px solid #bfbfbf;
+    justify-content: center;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+.mail-border-bottom{
+    width: 800px;
+    border-bottom: 1px solid #bfbfbf;
+    justify-content: center;
+    margin-left:auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.doki-border-bottom{
+    width: 800px;
+    border-bottom: 1px solid #bfbfbf;
+    justify-content: center;
+    margin-left:auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.details-border-top{
+    width: 800px;
+    border-top: 1px solid #bfbfbf;
+    justify-content: center;
+    margin-left:auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+.details-border-bottom{
+    width: 800px;
+    border-top: 1px solid #bfbfbf;
+    justify-content: center;
+    margin-left:auto;
+    margin-right: auto;
+}
+/* 縦罫線 */
+
+/* .border-left{
+    width: 2px;
+    border-left: 1px solid #bfbfbf;
+    justify-content: center; */
+
+    .border-left{
+        background-image:url(../img/tatekeisen.jpg);
+        background-repeat:repeat-y;
+        background-position:left top;
+    }
+
+.kana-2{
+    height: 36px;
+    width: 240px;
+    text-align: left;
+    font-size: 20px;
+    padding-top: 6px;
+/* 縦罫線を画像で背景指定して繰り返しで表示 */
+    /* background-image:url(../img/tatekeisen.jpg);
+    background-repeat:repeat-y;
+    background-position:left top;   */
+/* 反映しない。。。 */
+}
+
+.kana-form{
+    height: 36px;
+    width: 400px;
+    box-sizing: border-box ;
+}
+
+.kana{
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+/* メールアドレス */
+
+.mail-address-2{
+    height: 36px;
+    width: 240px;
+    text-align: left;
+    font-size: 20px;
+    padding-top: 6px;
+}
+
+.mail-form{
+    height: 36px;
+    width: 400px;
+    box-sizing: border-box ;
+}
+
+.mail-address{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+/* きっかけ */
+
+.reason-2{
+    height: 36px;
+    width: 240px;
+    text-align: left;
+    align-content: start;
+    font-size: 20px;
+    padding-top: 12px;
+    margin-right: 64px;
+}
+
+.reason-3{
+    height: 36px;
+    width: 240px;
+    text-align: left;
+}
+
+.reason-4{
+    height: 36px;
+    width: 240px;
+    text-align: left;
+}
+
+.pulldown{
+    height: 36px;
+    width: 400px;
+    box-sizing: border-box ;
+    /* テキストボックスと同じサイズに */
+    /* デフォルトサイズにしてからテキストボックス
+       paddingとborderを足す */
+}
+
+.reason{
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+/* 志望理由 */
+.doki-2{
+    height: 120px;
+    width: 240px;
+    text-align: left;
+    align-content: start;
+    font-size: 20px;
+    padding-top: 12px;
+}
+/* チェックボックスを縦に並べる */
+.doki-option label{
+    width: 400px;
+}
+.enterprise-box{
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 24px;
+}
+.career-box{
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 24px;
+    white-space: nowarp;
+}
+.working-box{
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 24px;
+}
+.working-box-2{
+    width:700px
+}
+.knowlege-box{
+    display: block;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 24px;
+}
+.doki{
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* チェックボックスの大きさ */
+.doki-option input{
+    transform:scale(2);
+    margin-right: 40px;
+}
+/* 詳細 */
+.details-2{
+    width: 240px;
+    height: 160px;
+    font-size: 20;
+    /* フォントサイズが有効にならない？ */
+    text-align-last: left;
+}
+
+.details-3{
+    /* フォントサイズが有効にならない？ */
+    height: 36;
+    font-size: 20;
+
+}
+.textarea{
+    width: 400px;
+}
+.details{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+/* 送信ボタン */
+.input-submit{
+    width: 300px;
+    background: #ffd61a;
+    margin-top: 30px;
+    margin-bottom: 140px;
+    height: 60px;
+    border:none;
+    font-size: 18px;
+    color:wihte;
+    text-align: center;
+    cursor: pointer;
+}
+
+.input-submit{
+    color:white;
+    /* なぜ一つ上のcolorが無効に？？ */
+}
+
+/* Footer */
+
+#footer{
+    width:1200px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background: #707070;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+.copy-rights{
+    color:white;
+}
+
+@media screen and (max-width:375px) {
+    .body{
+        max-width: 100%;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .img{
+        max-width: 100%;
+        height:auto ;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .nav{
+        display:none;
+        /* ナビゲーションを非表示にしたらできた！！！ */
+    }
+}

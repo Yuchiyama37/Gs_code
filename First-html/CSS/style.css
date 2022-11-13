@@ -1,0 +1,14 @@
+@charset "UTF-8";
+/* 一行ごとに文末にセミコロン必要 */
+/* color:#でパレットから色選択 */
+/* フォントサイズ＝ fz12 + tab */
+h2{
+   color:rgb(5, 139, 88); 
+   font-size: 43px;
+}
+
+/* class名指定する場合はdot使う */
+/* id名指定する場合は#使う */
+.b {
+    font-weight: bold;
+}
