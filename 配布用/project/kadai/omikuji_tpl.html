@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>おみくじ</title>
+</head>
+<body>
+
+<header>
+    <h1>おみくじ</h1>
+</header>
+
+<main>
+    <ul>
+        <li id="pull">おみくじを引く</li>
+    </ul>
+    <p id="echo"></p>
+</main>
+
+<footer>フッター</footer>
+<script>
+$("#pull").on("click",function(){
+
+
+// 乱数生成
+const r = Math.ceil(Math.random()*5 );
+
+// 2.if分岐
+let view = "";
+if(r==1){
+        view = '<img src="daikichi.jpeg" width=300px>'
+    }
+    if(r==2){
+        view = "中吉"
+    }
+    if(r==3){
+        view = "小吉"
+    }
+    if(r==4){
+        view = "吉"
+    }
+    if(r==5){
+        view = "凶"
+    }
+// 3
+    $("#echo").html(view);
+   
+
+});
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery練習</title>
+    <script src="./js/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <h1 id="echo"></h1>
+<script>
+$("#echo").html("こんにちは");
+$("#echo").html('<img src="https://gsacademy.jp/assets/images/header/logo.svg">');
+$("#echo").text("こんばんは");
+// $("#echo").text('<img src="https://gsacademy.jp/assets/images/header/logo.svg">');
+// リンクを殺して表示させるとか
+// $("#echo").fadeOut(3000)
+$("#echo").fadeIn(2000)
+$("#echo").append("ジーズにいます");
+$("#echo").prepend("みなさん、");
+$("#echo").html('<img src="./satoshi.png">');
+
+
+</script>
+</body>
+</html>

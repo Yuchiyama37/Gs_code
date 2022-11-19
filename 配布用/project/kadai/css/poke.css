@@ -1,0 +1,189 @@
+@charset "UTF-8" ;
+
+
+
+#header{
+    background-color: #222222;
+    justify-content: center;
+}
+#logo{
+    width: auto;
+    height: 100px;
+    justify-content: center;
+    margin-right: 100px ;
+}
+.gametitle{
+    font-size: 60px;
+    font-weight: bold;
+    color:red;
+    text-align: center;
+}
+
+footer{
+    background-color: #222222;
+    height: 150px;
+}
+
+.page{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    
+}
+
+main{
+    background-image: url(../img/stadium.jpeg);
+    background-repeat:no-repeat;
+    background-size: cover; 
+}
+
+.names{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 150px;
+    margin-right: 150px;
+
+}
+
+.names div{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.start{
+    width: 200px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#start{
+    width: 300px;
+    height: 40;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.playerImage{
+    width:326px;
+}
+
+.satoshi{
+    width: 200px;
+    height: auto;
+}
+.Dande{
+    width: auto;
+    height: 400px;
+}
+
+.battlefield{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    
+}
+.effect{
+    display: block;
+}
+
+
+.vs{
+    width:100px;
+    text-align: center;
+}
+
+#ImgOppP{
+    width: 250px;
+    height: auto;
+}
+
+#ImgPlayerP{
+    width: 250px;
+    height: auto;
+}
+
+
+#action{
+    margin-bottom: 50px;
+}
+
+/* ポケモンの名前とHP */
+.hpguage p{
+    background-color: white;
+    width: 50   px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.hpguage span{
+    background-color: white;
+    width: 50   px;
+    font-size: 30px;
+    text-align: center;
+}
+.pokename{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 300px;
+    margin-right: 380px;
+}
+
+.pokename p{
+    width: 180px;
+}
+
+
+
+.pikarizahp{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 350px;
+    margin-right: 420px;
+}
+
+.pikarizahp input{
+    font-size: 30px;
+    width: 70px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+
+}
+
+.actionarea{
+    width: 200px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#action{
+    width: 200px;
+    height: 40;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+
+
+.message{
+    border: 3px solid #222222;
+    border-style:double;
+    border-radius: 10px 10px 10px 10px;
+    width: 800px;
+    height: 150px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right:auto;
+    background-color: white;
+}
+
+.message p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+
