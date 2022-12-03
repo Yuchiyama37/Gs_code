@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>myMemoPad</title>
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/kadai2.css">
+<link rel="stylesheet" href="css/kadai2.css" media="screen and (max-width:400px)">
+</head>
+<body>
+    <header>
+        <h1>Nobody Knows Anything</h1>
+    </header>
+    <main>
+        <!-- 一段目 -->
+        <div class="top-input">
+            <select name="key" id="key">
+                <option value=" "></option>
+                <option id="probability" value="蓋然性">蓋然性</option>
+                <option id="possibility" value="意外性">意外性</option>
+            </select>
+
+            <textarea name="" id="memo" ></textarea>
+            <button id="save" disabled>Save</button>
+        </div>
+
+        <!-- 二段目 -->
+        <div id="mixture">
+            <!-- 一つ目の要素が入力される -->
+            <div class="firstItem">
+                <textarea name="" id="memoItem1" cols="30" rows="1"></textarea>
+                <button id="output1">蓋然性</button>
+            </div>
+
+            <!--  掛けるマーク-->
+            <p>X</p>
+            
+
+            <!-- 二つ目の要素が入力される -->
+            <div class="secondItem">
+                <textarea name="" id="memoItem2" cols="30" rows="1"></textarea>
+                <button id="output2">意外性</button>
+            </div>
+
+            <p>このふたつが同時に発生したら...?</p>
+        </div>
+
+            <!-- 三段目 -->
+        <div class="result">   
+            <div class="resultbtn">
+                <button id="ideabtn">発想！！</button>
+                <button id="rethink">もう一回！！</button>
+            </div>
+            <div class="ideaArea">
+            <textarea name="idea" id="idea" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+
+
+    </main>
+
+    <div class="tableArea">
+        <table id="list">
+        <!-- ここに追加データが挿入される -->
+        </table>
+    </div>
+
+    <!-- プルダウンに変えたほうがいい -->
+    <div class="deleteKey">
+        <select name="" id="deleteKeyInput">
+            <option value="">削除したい項目を選択</option>
+        </select>
+    </div>
+
+
+    <div class="delete">   
+        <button id="deletebtn">一件削除</button>
+    </div>
+
+    </div>
+        <div class="clearbtn">   
+            <button id="clear">全件削除</button>
+        </div>
+    
+    <script>
+
+        //メモを入力したらsaveぼたんが使えるようになる 
+        const memoText = document.querySelector("#memo");
+        const saveBtn = document.querySelector("#save");
+        memoText.addEventListener("keyup", (e)=>{
+            if (1 <= e.target.value.length){
+                saveBtn.disabled = false;
+            }
+        })
+
+    // 1.Save クリックイベント
+        let n = localStorage.length;
+        // saveぼたんを押すとカテゴリ名＋番号でlocal storageに保存される
+        $("#save").on("click", function(){
+            const key = $("#key").val();
+            const value = $("#memo").val();
+            n++;
+            localStorage.setItem(key+n, value);
+            // if文ではうまくいかなかった
+            // for(let i = 0; i<localStorage.length; i++){
+            //     localStorage.setItem(key+n, value);
+            // }
+            // memo入力内容をクリア
+            // memoText.clear();
+        })
+
+        // 2.保存したメモをランダムに出力①
+        // key名に「蓋然性」を含むものだけ取り出したい（未実装：indexOf、satartsWithを使う？）
+        $("#output1").on("click", function(){
+            let n1 = Math.floor(Math.random() * localStorage.length)
+            const storageV1 = localStorage.key(n1);
+            // key名を取得
+            const value = localStorage.getItem(storageV1);
+            // key名からバリューを取得
+            console.log(value);
+            $("#memoItem1").text(value);
+            
+        })
+        // if(localStorage.getItem("蓋然性1")){
+        //     const v = localStorage.getItem("蓋然性1");
+        //     $("idea").text(v);
+        // }
+
+        // 2.保存したメモをランダムに出力②
+        // key名に「意外性」を含むものだけ取り出したい（未実装：indexOf、satartsWithを使う？）
+        $("#output2").on("click", function(){
+            let n2 = Math.floor(Math.random() * localStorage.length)
+            const storageV2 = localStorage.key(n2)
+            const value = localStorage.getItem(storageV2);
+            console.log(value);
+            $("#memoItem2").text(value);
+        })
+
+    
+    //テーブルの下にkeyをリスト表示 
+
+    
+
+    for(let i = 0; i<localStorage.length; i++){
+    const key = localStorage.key(i);
+    const Keyname = localStorage.getItem(key);
+    const targetkey = `<option>${key}</option>`
+    $("#deleteKeyInput").append(targetkey);
+    }
+    
+
+    //deletebtn クリックイベント 
+    
+    
+    $("#deletebtn").on("click", function(){
+        // selectから選ばれている項目の要素を取り出す
+        let targetKeyName = $("#deleteKeyInput").children("option:selected");
+        // 選ばれている項目のvalueを取り出す
+        let targetKeyNameVal = targetKeyName.val();
+        // let targetKeyNameTxt = targetKeyName.text();
+        // 選ばれている項目をlocal storageから消す
+        localStorage.removeItem(targetKeyNameVal);
+        // 同時にテーブルからも消したい（未実装）
+
+        // console.log(targetKeyNameVal);
+    })
+        
+    // .clear クリックイベント
+    $("#clear").on("click", function(){ 
+        let confirmClear = window.confirm("本当に全件削除しますか？");
+        if(confirmClear){
+            $("#list").empty;
+            localStorage.clear();
+            
+        }else{
+            alert("キャンセルしました");
+        }
+    });
+
+
+    //3.ページ読み込み：保存データ取得表示
+    for(let i = 0; i<localStorage.length; i++){
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+    // localStorage.setItem(key,value);
+    const html = '<tr><th>'+key+'</th><td>'+value+'</td></tr>';
+    $("#list").append(html);
+    }
+
+
+
+    // for(let i = 0; i<localStorage.length; i++){
+    //     const key = localStorage.key(i);
+    //     const value = localStorage.getItem(key);
+    //     localStorage.setItem(key,value);
+    //     const html = '<tr><th>'+key+'</th><td>'+value+'</td></tr>';
+    //     $("#list").append(html);
+    // }
+
+    // 発想！！ボタン
+    
+    ideabtn = document.querySelector("#ideabtn")
+    //リクルートのオープンAI A3RT text suggestで文章を生成する 
+        $("#ideabtn").on("click", function(){  
+    const endpoint = "https://api.a3rt.recruit.co.jp/text_suggest/v2/predict"
+    const APIkey = "?apikey=DZZEF0CwDEjRIRVJRuzfdyMwEXmuuRAr"
+    const previous_description = "&previous_description="
+    let keyword1 = document.querySelector("#memoItem1").value;
+    let keyword2 = document.querySelector("#memoItem2").value;
+    console.log(keyword2);
+    $.getJSON(
+        endpoint + APIkey + previous_description + keyword1 + "と" + keyword2,
+        // keyword1とkeyword2のバリューをきちんと取れているか？空白から文章が生成されている？
+        function(data){
+            console.dir(data);
+            $("#idea").text(data.suggestion)
+        })
+        ideabtn.disabled = true;        
+            })
+
+        // もう一回！！ボタン：クリックイベント
+        $("#rethink").on("click", function(){
+            ideabtn.disabled = false;
+        })
+        
+    
+
+
+
+    </script>
+    <footer>
+        <small>Future Insight<br>
+            Chance Favors the Prepared Mind
+        </small>
+    </footer>
+</body>
+</html>
