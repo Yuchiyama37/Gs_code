@@ -1,0 +1,119 @@
+body{
+    width:100%;
+
+}
+
+header{
+    background-color: green;
+
+}
+
+header p{
+    font-size: 32px;
+    text-align: center;
+    color: rgb(242, 235, 235);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+main{
+    background-color: rgb(8, 197, 87);
+}
+footer{
+    background-color: green;
+    position: fixed;
+    bottom: 0;
+
+}
+/* アイコン選択 */
+.icons{
+    display: flex;
+    align-items: center;
+}
+.icons img {
+    height: 50px;
+    width: 50px;
+    border-radius: 40px 40px 40px 40px;
+    cursor: pointer;
+}
+
+#explain1{
+   margin-left: 5%;
+}
+
+
+#output{
+    border: 2px solid #222222;
+    width:100%;
+    height: 500px;
+    margin-bottom: 5px;
+    line-height: 1.5;
+    background-color: #555353;
+    overflow: auto;
+}
+
+#text{
+    width: 85%;
+    height: 50px;
+    background-color: #827f7f;
+    border-radius: 20px 20px 20px 20px;
+    padding-top: 2%;
+
+}
+
+#selectedicon {
+    height: 50px;
+    width: 50px;
+    border-radius: 40px 40px 40px 40px;
+ }
+
+
+#send{
+    display:none;
+}
+
+.unameSelf{
+float:right;
+color: white;
+/* color:rgb(236, 8, 8) */
+
+}
+
+.textSelf{
+    float:right;
+    background-color: rgb(109, 189, 97);
+    border-radius: 30px 30px 30px 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    }
+
+.iconSelf{
+    height: 20px;
+    width: 20px;
+    float:right;
+}
+
+.btnSelf{
+    float:right;
+}
+
+.btnOther{
+    cursor: pointer;
+}
+
+.unameOther{
+    float:left;
+    color:white
+
+}
+
+.textOther{
+    float:left;
+    border-radius: 30px 30px 30px 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(105, 104, 102);
+    color:white;
+    /* color:rgb(236, 8, 8) */
+    /* colorで試してみる */
+}

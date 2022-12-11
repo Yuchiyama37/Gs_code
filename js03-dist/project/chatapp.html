@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/reset.css">
+    <link rel="stylesheet" href="./CSS/chat.css">
+    <title>Chatアプリ</title>
+</head>
+<body>
+    
+
+<!-- header -->
+<header>
+    <p>LINE風アプリ</p>
+</header>
+
+<!-- コンテンツ表示画面 -->
+<main>
+<div>
+    
+    <!-- アイコン選択 -->
+    <div class="icons">
+        <img id="buke" src="./imgs/buke.png" alt="ねこ">
+        <img id="caram"  src="./imgs/caram.png" alt="いぬ">
+        <img id="tuku" src="./imgs/tuku.jpg" alt="つばめ">
+        <p class="explain" id="explain1">好きなアイコンを選んでね</p>
+    </div>
+    
+    <div>
+        名前: <input type="text" id="uname">
+    </div>
+    <!-- <ul>
+        <li style="background-image: url'./imgs.buke.png'"></li>
+        <li style="background-image: url'./imgs.caram.png'"></li>
+        <li style="background-image: url'./imgs.caram.png'"></li> -->
+    <!-- </ul> -->
+    
+    <div id="output"></div>
+   
+
+
+    <div class="textareaback">
+        <textarea name="" id="text" cols="30" rows="10"></textarea>
+        <button id="send">送信</button>
+        <img id="selectedicon" src="./imgs/notselected.png" alt="">
+    </div>
+
+    
+</div>
+</main>
+
+<footer>
+
+</footer>
+
+
+
+<!--/ コンテンツ表示画面 -->
+
+
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- JQuery -->
+
+
+
+<!--** 以下Firebase **-->
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved }
+        from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.14.0/firebase-database.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDpoID7qb2ou63isMeQgn3w6dZjYH8CPAM",
+      authDomain: "fir-demo-8eefb.firebaseapp.com",
+      projectId: "fir-demo-8eefb",
+      storageBucket: "fir-demo-8eefb.appspot.com",
+      messagingSenderId: "865129182407",
+      appId: "1:865129182407:web:253c2f1fe681073bf53ae2"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    //データベース(realtime database)に接続
+    const db = getDatabase(app); 
+    const dbRef = ref(db, "chat");//Realtime DB内のchatを使う
+
+    // #sendがクリックされたら　名前・本文を取得
+    $("#send").on("click", function() {
+        // const uname = document.querySelector("#uname").val();
+        // const text = $("#text").val();
+        const msg = {
+            uname: $("#uname").val(),
+            text: $("#text").val(),   
+        }
+        const newPostref = push(dbRef);
+        set(newPostref, msg);
+    });
+    // アイコン選択
+    $("#buke").on("click", function(){
+        $("#caram").fadeOut(0);
+        $("#tuku").fadeOut(0);
+        const buke = document.querySelector("#buke").src;
+        document.querySelector("#selectedicon").src = buke;
+        $("#explain1").fadeOut(0); 
+    })
+
+    $("#caram").on("click", function(){
+        $("#buke").fadeOut(0);
+        $("#tuku").fadeOut(0);
+        const caram = document.querySelector("#caram").src;
+        document.querySelector("#selectedicon").src = caram;
+        $("#explain1").fadeOut(0); 
+    })
+
+    $("#tuku").on("click", function(){
+        $("#buke").fadeOut(0);
+        $("#caram").fadeOut(0);
+        const tuku = document.querySelector("#tuku").src;
+        document.querySelector("#selectedicon").src = tuku; 
+        $("#explain1").fadeOut(0);       
+    })
+
+    // onChildAdded 
+    // 1. ページがロードされた時に特定の場所からデータを全部持ってくる
+    // 2. 新しくデータが追加された時にも同じ挙動をする
+    onChildAdded(dbRef, function(data){
+        const key = data.key; // ユニークキーを取得
+        const msg = data.val(); 
+        // console.log(key);
+        
+        // const uname = data.uname
+        let uname = $("#uname").val();
+       
+
+        // 名前とメッセージを表示
+        let h = "";
+        if(msg.uname == $("#uname").val()){
+            
+            h = `<p class="unameSelf">${msg.uname}</p><br>
+            <p class="textSelf">${msg.text}</p>
+            <div class="btnSelf"><button id=${key}>x</button></div><br>`;
+            
+        }else{
+            h = `<p class="unameOther">${msg.uname}</p><br>
+            <button class="btnOther" id=${key}>x</button><p class="textOther">${msg.text}</p><br>`;
+        }
+        $("#output").append(h);
+       
+
+        // メッセージ入力時に最下部に移動
+        const scrollend = document.querySelector("#output");
+        scrollend.scrollTo(0, scrollend.scrollHeight);
+
+        // アイコンと投稿じかんを同時に表示
+            // 投稿時間はfirebaseの機能では記録できない？？
+
+             //自分の名前と同じメッセージを右に寄せる
+            // pタグのid unameOther, textOther をSelfに変更する
+            const className = $(".unameOther").val("");
+            if(className == $("#uname").val("")){
+                $(".unameOther").toggleClass("unameOther unameSelf")
+            }
+            
+        //     if(className == $("#uname").val("")){
+            
+        //     $(".unameOther").attr("class", "unameSelf");
+        //     // $(".textOther").attr("class", "textSelf");
+        //     // $(".textOther").removeAttr("class");
+            
+        // }
+
+
+    })
+   
+    
+    // enterキーを押したらメッセージ送信・・・keydown
+    $("#text").on("keydown", function(e){
+        // eはevent
+        // enterキーは13
+        // 変換を確定する時のenterキーは229
+        if(e.keyCode === 13){
+            const msg = {
+            uname: $("#uname").val(),
+            text: $("#text").val(),
+        }
+        const newPostref = push(dbRef);
+        set(newPostref, msg);
+       
+        // enterキー押したらテキストを空にしたい
+        const textval = $("#text").val;
+        textval.value = $("#text").val("");
+        $("#text").html(" ");
+        }
+        // const iconSelf = document.querySelector("#selectedicon").src;
+        // $(".iconSelf").text(iconSelf)
+        // // console.log(iconSelf); 
+    })
+
+    // メッセージの削除機能
+    $(".btnOther").on("click", function(){
+        // クリックでid名を取得
+
+        // id名をremove()でfirebaseから削除
+        console.log("kesu");
+    })
+
+    
+
+
+
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
