@@ -1,0 +1,141 @@
+body{
+    width: 100%;
+    font-size: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header{
+    height: 30%;
+    background-color: aquamarine;
+    margin-bottom: 10%;
+}
+
+header p{
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;;
+    padding-bottom: 5%;
+   
+}
+
+#initialScreen{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#initialScreen p, button{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+#initialScreen button{
+    cursor: pointer;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(7, 135, 50);
+    border: none;
+    padding: 1% 1% 1% 1%;
+}
+
+/* ログイン画面 */
+#loginScreen div, button{
+    display: flex;
+    justify-content: center;
+}
+#loginScreen ul, li{
+    list-style: none;
+    margin-bottom: 2%;
+}
+#pass{
+    margin-left: 30px;
+}
+#login{
+    margin-top: 10%;
+}
+#loginScreen button{
+    cursor: pointer;
+    width: 20%;
+    color: white;
+    background-color: rgb(7, 135, 50);
+    border: none;
+    border-radius: 5px;
+    padding: 1% 1% 1% 1%;
+}
+/* 登録画面 */
+#regiScreen div, button{
+    display: flex;
+    justify-content: center;
+}
+
+#regiScreen h1{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+#newUsername{
+    margin-left: 55px;
+}
+#newPass{
+    margin-left: 30px;
+}
+
+#regiScreen button{
+    cursor: pointer;
+    width: 15%;
+    color: white;
+    background-color: rgb(7, 135, 50);
+    border: none;
+    border-radius: 5px;
+    padding: 1% 1% 1% 1%;
+    margin-top: 5%;
+}
+
+/* コンテンツ画面(secondScreen) */
+
+
+#secondScreen button{
+    cursor: pointer;
+    width: 20%;
+    color: white;
+    background-color: rgb(7, 135, 50);
+    border: none;
+    border-radius: 5px;
+    padding: 1% 1% 1% 1%;
+    margin-bottom: 10%;
+}
+
+#keyword{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+#content{
+    background-color: bisque;
+    border-top: 1px solid;
+}
+#content li{
+    padding-top: 1%;
+    margin-bottom: 1%;
+    border-bottom: 1px solid;
+}
+
+/* footer */
+footer{
+    height: 30%;
+    background-color: aquamarine;
+    margin-bottom: 10%;
+}
+footer small{
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;;
+    padding-bottom: 5%;
+    margin-top: 5%;
+}

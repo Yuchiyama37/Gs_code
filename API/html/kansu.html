@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <!-- JQuery -->
+    <script>
+        function func(number, callback){
+            const powered = number **2;
+            callback(powered);
+        }
+
+        // 直径６として
+        const radius = 6;
+
+        // 第二因数に円周率を使い、正方形から円形に切り出して面積をけいさんする関数を設定
+        func(radius, function(square){
+            const s = square * 3.14 /4;
+            console.log(s);
+        })
+
+        $.get(func, function(){
+            
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/API.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <p>ログイン管理してくれるアプリ</p>
+    </header>
+    
+    <div id="initialScreen">
+        <p>アカウントをお持ちでない方</p>
+        <button id="proceedRegi">新規登録</button>
+        <p>アカウントをお持ちの方</p>
+        <button id="proceedlogin">ログイン</button>
+    </div>  
+
+        <!-- ログイン後に消えるstart -->
+            <!-- ログインフォーム -->
+        <div id="loginScreen">
+            <div id="loginform">
+                <ul style="list-style: none;">
+                <li>
+                <span>メールアドレス： </span>        
+                <span><input id="mail" type="mailAddress" required/></span>          
+                </li>
+            </div>
+            <div>
+                <li>
+                <span>パスワード：</span>
+                <span><input id="pass" type="text" required/></span>
+                </li>
+            </div>
+                </ul>
+            <button id="login">ログイン</button>
+        </div>
+            <!-- ログイン画面end -->
+        <!-- ログイン後に消えるend -->
+            
+        <!-- アカウント作成 -->
+        <div id="regiScreen">
+            <h1>アカウントの新規登録</h1>
+        <ul>
+            <div id="regiName">
+            <li>
+            <span>お名前：</span>
+            <span><input id="newUsername" type="name"></span>
+            </li>   
+            </div id=regiMail>
+            <li>
+            <div>
+                <span>メールアドレス：</span>        
+                <span><input id="newMail" type="mailAddress" required/></span>          
+            </div>
+            </li>
+            <li>
+            <div id="regiPass">
+                <span> パスワード：</span>
+                <span><input id="newPass" type="text" required/></span>
+            </div>
+            </li>
+        </ul>
+            <button id="register">登録</button>
+        </div>
+
+    <!-- ログイン後に出てくるstart -->
+    <div id="secondScreen">  
+            <!-- Welcomeメッセージ -->
+            <span>ようこそ、</span>
+            <span id="unameDisplay">ユーザー名が入る予定</span>
+
+            <!-- ログアウトボタン -->
+            <span id="logout">
+                <button id="logoutbtn">ログアウト</button>
+            </span>
+         
+            <div id="googlebooksSearch">
+                <p>どんな本を探しますか？</p>
+                <input type="text" id="keyword" placeholder="キーワードを入力してさがす" value="">
+                <div id="keywordBox">
+                <button id="readbook">さがす</button>
+                </div>
+            </div>
+
+            <div id="content"></div>
+
+    </div>
+    <!-- ログイン後に出てくるend -->
+
+<footer>
+<small>copyright</small>
+</footer>
+    </main>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <!-- JQuery -->
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, 
+                 onAuthStateChanged, signOut } 
+        from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-auth.js"
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved }
+        from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "",
+          authDomain: "mil-api-aaedc.firebaseapp.com",
+          projectId: "mil-api-aaedc",
+          storageBucket: "mil-api-aaedc.appspot.com",
+          messagingSenderId: "536915321531",
+          appId: "1:536915321531:web:bca9fe039e675e75f77f9e"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Initialize Firebase Authentication and get a reference to the service
+        const auth = getAuth(app);
+
+        //データベース(realtime database)に接続
+        const db = getDatabase(app); 
+            const dbRef = ref(db, "userAccount");
+            //Realtime DB内のuserAccountを使う
+
+            
+        //画面初期設定
+            
+            //ログイン画面非表示
+            $("#loginScreen").hide();
+
+            //アカウント登録画面非表示
+            $("#regiScreen").hide();
+
+           //コンテンツdiv非表示
+            $("#secondScreen").hide();
+            
+            //登録画面に進む
+            $("#proceedRegi").on("click", function(){
+                $("#initialScreen").hide();
+                $("#regiScreen").fadeIn(0);
+            })
+
+            //ログイン画面に進む
+            $("#proceedlogin").on("click", function(){
+                $("#initialScreen").hide();
+                $("#loginScreen").fadeIn(0);
+            })
+
+            
+
+        //ユーザー登録処理
+        $("#register").on("click", function(){
+            const newMail = document.querySelector("#newMail").value;
+            const newPass = document.querySelector("#newPass").value;
+            const uname   = document.querySelector("#newUsername").value;
+            createUserWithEmailAndPassword(auth, newMail, newPass)
+            .then((userCredential) => {
+                //登録される.userid取得
+                const user = userCredential.user;
+                const uid = user.uid;
+                //userアカウントをrealtimedbに作成
+                    const accountinfo = {
+                        uname,
+                        newMail,
+                        newPass,
+                        uid
+                    }
+                    console.log(uname)
+                    const useraccount = push(dbRef);
+                    set(useraccount, accountinfo);
+
+                //登録フォーム消える
+                $("#regiScreen").hide();
+                //メインコンテンツ出てくる
+                $("#secondScreen").fadeIn(1000);
+                onAuthStateChanged(auth, (user) => {
+                if(user){
+                        const uid = user.uid;
+                        //ユーザー名を表示
+                        $("#unameDisplay").html(uname)
+                }else{
+                    // alert("サインアウトしました")
+                }
+                })
+            })
+            .catch(function(error){
+                const efforCode = error.code;
+                const efforMessage = error.message
+                alert(error.code, error.message);
+            })
+        })
+
+        // ログイン処理
+        $("#login").on("click", function(){ 
+            const mailAddress = document.querySelector("#mail").value;
+            const pass = document.querySelector("#pass").value;
+            signInWithEmailAndPassword(auth, mailAddress, pass)
+            .then((userCredential) => {
+                // Singed in
+                const user = userCredential.user
+                alert("ログインしました")
+                // iii@example.com gggggg
+                // mariko.pikachu@example.com pikachu
+                // ログインフォーム消える
+                $("#loginScreen").hide();
+                //メインコンテンツ出てくる
+                $("#secondScreen").fadeIn(1000);
+                //ユーザー情報を取得
+                onAuthStateChanged(auth, (user) => {
+                if(user){
+                        const uid = user.uid;
+                        //ユーザー名を表示
+                        $("#unameDisplay").html(uid)
+                }
+                })
+            })  
+            .catch(function(error){
+                alert("ログインできませんでした")
+            })
+        })
+
+        //   ユーザーIDを取得
+        onAuthStateChanged(auth, (user) => {
+            if(user){
+                    const uid = user.uid;
+                    // console.log(uid);
+                    //ユーザー名を表示
+
+            }else{
+                // alert("サインアウトしました")
+            }
+        })
+
+        // ログアウト処理
+        $("#logoutbtn").on("click", function(){
+            signOut(auth).then(() =>{
+                // ログアウトした時の処理
+                alert("ログアウトしました")
+                $("#secondScreen").hide();
+                $("#initialScreen").fadeIn(500);
+                location.reload();
+            }).catch((error) =>{
+                // エラー発生した時
+            })
+        })
+
+        
+        //GoogleBooks API
+        // 手順
+        // 1. $.get() を使って 情報を取得する
+        $("#readbook").on("click", function(){
+        const endpoint = "https://www.googleapis.com/books/v1/volumes?q="
+        const bookname = document.querySelector("#keyword").value;
+        $.get(endpoint + bookname, function(data){
+        console.log(data);
+        const items = data.items;
+        for(let i = 0; i<items.length; i++){
+        console.log(items[i].volumeInfo.title);
+        $("#content").append(`<ul><li>タイトル：${items[i].volumeInfo.title}<br>
+            著者：${items[i].volumeInfo.authors}</li></ul>`)
+        }
+        })
+        // テキストを空にしたい
+        const keywordval = $("#keyword").val;
+        keywordval = $("#keyword").val("");
+        // $("#keyword").html(" ");
+        console.log(keywordval);
+        })
+
+
+      </script>
+</body>
+
+
+</html>
