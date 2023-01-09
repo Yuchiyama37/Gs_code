@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="../CSS/reset.css">
+    <link rel="stylesheet" href="../CSS/LPG_Trading.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+
+    <main>
+
+        <div id="initialScreen">
+            <p>アカウントをお持ちでない方</p>
+            <button id="proceedRegi">新規登録</button>
+            <p>アカウントをお持ちの方</p>
+            <button id="proceedlogin">ログイン</button>
+        </div>  
+
+         <!-- ログイン後に消えるstart -->
+            <!-- ログインフォーム -->
+            <div id="loginScreen">
+                <div id="loginform">
+                    <ul style="list-style: none;">
+                    <li>
+                    <span>メールアドレス： </span>        
+                    <span><input id="mail" type="mailAddress" required/></span>          
+                    </li>
+                </div>
+                <div>
+                    <li>
+                    <span>パスワード：</span>
+                    <span><input id="pass" type="text" required/></span>
+                    </li>
+                </div>
+                    </ul>
+                <button id="login">ログイン</button>
+            </div>
+                <!-- ログイン画面end -->
+            <!-- ログイン後に消えるend -->
+                
+            <!-- アカウント作成 -->
+            <div id="regiScreen">
+                <h1>アカウントの新規登録</h1>
+            <ul style="list-style: none;">
+                <div id="regiName">
+                <li>
+                    <span>お名前：</span>
+                    <span><input id="newUsername" type="name"></span>
+                </li>   
+                <li>
+                    <span>トレードネーム</span>
+                    <span><input id="newTradename" type="name"></span>
+                    </li>   
+                </div id=regiMail>
+                <li>
+                    <span>メールアドレス：</span>        
+                    <span><input id="newMail" type="mailAddress" required/></span>          
+                </li>
+                <li>
+                <div id="regiPass">
+                    <span> パスワード：</span>
+                    <span><input id="newPass" type="text" required/></span>
+                </div>
+                </li>
+            </ul>
+                <button id="register">登録</button>
+            </div>
+
+            <p id="unameDisplay"></p>
+
+    </main>
+
+    <footer>
+
+
+    </footer>
+
+<!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<!-- Jquery -->
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } 
+    from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-auth.js"
+    import { getDatabase, ref, push, set, onChildAdded, remove, onChildRemoved }
+    from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-database.js"
+    import { getFirestore, collection, doc, addDoc, getDoc, setDoc, Timestamp, updateDoc, arrayUnion, arrayRemove, increment, deleteDoc, deleteField,  }
+    from "https://cdnjs.cloudflare.com/ajax/libs/firebase/9.15.0/firebase-firestore.js"
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "",
+      authDomain: "js-championship-f6b37.firebaseapp.com",
+      databaseURL: "https://js-championship-f6b37-default-rtdb.firebaseio.com",
+      projectId: "js-championship-f6b37",
+      storageBucket: "js-championship-f6b37.appspot.com",
+      messagingSenderId: "1063801575454",
+      appId: "1:1063801575454:web:cf60eda4c252f8a7ceb60f"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    // Initialize Firebase Authentication and get a reference to the service
+    const auth = getAuth(app);
+    //データベース(realtime database)に接続
+    const rtdb = getDatabase(app); 
+            const dbRef = ref(rtdb, "userAccount");
+        //Realtime DB内のuserAccountを使う
+    const fsdb = getFirestore(app);
+
+//画面初期設定
+            
+            //ログイン画面非表示
+            $("#loginScreen").hide();
+
+            //アカウント登録画面非表示
+            $("#regiScreen").hide();
+            
+            //登録画面に進む
+            $("#proceedRegi").on("click", function(){
+                $("#initialScreen").hide();
+                $("#regiScreen").fadeIn(0);
+            })
+
+            //ログイン画面に進む
+            $("#proceedlogin").on("click", function(){
+                $("#initialScreen").hide();
+                $("#loginScreen").fadeIn(0);
+            })
+            //ユーザー登録処理
+             $("#register").on("click", function(){
+            const Mail = document.querySelector("#newMail").value;
+            const Password = document.querySelector("#newPass").value;
+            const Username   = document.querySelector("#newUsername").value;
+            createUserWithEmailAndPassword(auth, Mail, Password)
+            .then((userCredential) => {
+                //登録される.userid取得
+                const user = userCredential.user;
+                const UserID = user.uid;
+                //userアカウントをrealtimedbに作成
+                    const accountinfo = {
+                        Username,
+                        Mail,
+                        Password,
+                        UserID
+                    }
+                    // ユーザー情報をFSに保存。
+                    //コレクション名:userinfo, ドキュメント名：ユーザーID
+                    setDoc(doc(fsdb, "userinfo", UserID ),{
+                        accountinfo
+                    })
+
+                //登録フォーム消える
+                $("#regiScreen").hide();
+                //メインコンテンツ出てくる
+                $("#secondScreen").fadeIn(1000);
+                onAuthStateChanged(auth, (user) => {
+                if(user){
+                        const UserID = user.uid;
+                        // FSからユーザー名を取得
+                        const docRef = doc(fsdb, "userinfo", UserID);
+                        const User = getDoc(docRef);
+                        //ユーザー名を表示
+                        $("#unameDisplay").html(UserID);
+                        console.log(UserID);
+                }else{
+                    // alert("サインアウトしました")
+                }
+                })
+            })
+        })
+
+
+
+        
+        let UserID = ""
+        //ログイン画面操作
+        $("#login").on("click", function(){
+            
+            const mailAddress = document.querySelector("#mail").value;
+            const pass = document.querySelector("#pass").value;
+            signInWithEmailAndPassword(auth, mailAddress, pass)
+            .then((userCredential) => {
+                // Singed in
+                const user = userCredential.user
+                alert("ログインしました");
+                $("#loginScreen").hide();
+            
+            
+            onAuthStateChanged(auth, (user) => {
+                if(user){
+                        UserID = user.uid;
+                        // console.log(UserID);
+                        // FSからユーザー名を取得
+                        const docRef = doc(fsdb, "userinfo", UserID);
+                        const User = getDoc(docRef, "accountinfo", "Username");
+                        //ユーザー名を表示
+                        console.log(User);
+                        $("#unameDisplay").html(UserID);
+                }       
+                })
+            })
+    })
+  </script>
+
+
+ <!-- Firebase - Auth, FireSore, RTDB -->
+
+
+    
+</body>
+
+</html>

@@ -1,0 +1,630 @@
+/* 基本設定 */
+body{
+    max-width: 100%;
+    margin-left:0.5%;
+    margin-right: 0.5%;
+
+}
+header{
+    width: 100%;
+    background-color: rgb(6, 161, 109);
+}
+header p{
+    color:whitesmoke;
+    font-size: 34px;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* マーケット情報・marketInfoグリッドコンテナ設定 */
+#marketInfo{
+    display: grid;
+    grid-template-columns: 
+    repeat(7, 1fr);
+    grid-template-rows: 
+    repeat(6, 1fr);
+    width: 100%;
+    background-color: rgb(63, 61, 61);
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+}
+#marketInfo div{
+    border: 1px solid whitesmoke;
+    text-align: center;
+}.Brent{
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}.MB{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}.FEI{
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}.CP{
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+}.Baltic{
+    grid-column: 1 / 2;
+    grid-row: 6 / 7;
+}.Jan{
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}.Feb{
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}.Mar{
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+}.Apr{
+    grid-column: 5 / 6;
+    grid-row: 1 / 2;
+}.May{
+    grid-column: 6 / 7;
+    grid-row: 1 / 2;
+}.Jun{
+    grid-column: 7 / 8;
+    grid-row: 1 / 2;
+}.JanBrent{
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}.FebBrent{
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}.MarBrent{
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+}.AprBrent{
+    grid-column: 5 / 6;
+    grid-row: 2 / 3;
+}.MayBrent{
+    grid-column: 6 / 7;
+    grid-row: 2 / 3;
+}.JunBrent{
+    grid-column: 7 / 8;
+    grid-row: 2 / 3;
+}.JanMB{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}.FebMB{
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+}.MarMB{
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+}.AprMB{
+    grid-column: 5 / 6;
+    grid-row: 3 / 4;
+}.MayMB{
+    grid-column: 6 / 7;
+    grid-row: 3 / 4;
+}.JunMB{
+    grid-column: 7 / 8;
+    grid-row: 3 / 4;
+}.JanFEI{
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}.FebFEI{
+    grid-column: 3 / 4;
+    grid-row: 4 / 5;
+}.MarFEI{
+    grid-column: 4 / 5;
+    grid-row: 4 / 5;
+}.AprFEI{
+    grid-column: 5 / 6;
+    grid-row: 4 / 5;
+}.MayFEI{
+    grid-column: 6 / 7;
+    grid-row: 4 / 5;
+}.JunFEI{
+    grid-column: 7 / 8;
+    grid-row: 4 / 5;
+}.JanCP{
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+}.FebCP{
+    grid-column: 3 / 4;
+    grid-row: 5 / 6;
+}.MarCP{
+    grid-column: 4 / 5;
+    grid-row: 5 / 6;
+}.AprCP{
+    grid-column: 5 / 6;
+    grid-row: 5 / 6;
+}.MayCP{
+    grid-column: 6 / 7;
+    grid-row: 5 / 6;
+}.JunCP{
+    grid-column: 7 / 8;
+    grid-row: 5 / 6;
+}.JanBaltic{
+    grid-column: 2 / 3;
+    grid-row: 6 / 7;
+}.FebBaltic{
+    grid-column: 3 / 4;
+    grid-row: 6 / 7;
+}.MarBaltic{
+    grid-column: 4 / 5;
+    grid-row: 6 / 7;
+}.AprBaltic{
+    grid-column: 5 / 6;
+    grid-row: 6 / 7;
+}.MayBaltic{
+    grid-column: 6 / 7;
+    grid-row: 6 / 7;
+}.JunBaltic{
+    grid-column: 7 / 8;
+    grid-row: 6 / 7;
+}
+/* メインコンテンツのグリッドコンテナ設定 */
+.grid{
+    display:grid;
+    /* 列を7分割 */
+    grid-template-columns: 
+    repeat(6, 1fr);
+    /* 行を6分割 */
+    grid-template-rows: 
+    repeat(6, 1fr);
+    width: 100%;
+    height: 600px;
+}.griditemA{  
+    grid-area: Positon;
+    grid-column: 1 / 2 ;
+    grid-row: 1 / 5;
+    border: 1px solid rgb(189, 186, 186);
+
+}.griditemB{ 
+    grid-area: Navigator ;
+    grid-column: 1 / 2;
+    grid-row: 5 / 7 ;
+    border: 1px solid rgb(189, 186, 186);
+    background-image: url(../Images/Ofiice.jpeg) ;
+    display: flex;
+    justify-content: end;
+}#navigatorImg{
+    width: auto;
+    height: 100%;
+    display: cover;
+    /* background-color: rgba(30, 177, 128, 0.528); */
+}.griditemC{ 
+    grid-area: Main;
+    grid-column: 2 / 6;
+    grid-row: 1 / 5;
+    border: 1px solid rgb(189, 186, 186);
+}.griditemD{
+    grid-area: Message ;
+    grid-column: 2 / 6;
+    grid-row: 5 / 7;
+    border: 2px double black;
+    border-radius: 10px 10px 10px 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+}.griditemE{ 
+    grid-area: Index;
+    grid-column: 6 / 7;
+    grid-row: 1 / 7;
+    border: 1px solid rgb(189, 186, 186);
+}
+/* メニューボタン設定 */
+.griditemA button{
+    width: 100%;
+    height: 20%;
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+/* Term Contractの設定 */
+
+#TermContractScreen p{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+#TermContractScreen table{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+}
+/* Main画面Charteringの設定 */
+#CharteringScreen img{
+    width: 250px;
+    height: 150px;
+    display: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+#CharteringScreen button{
+    cursor: pointer;
+}
+#CharteringScreen label{
+    cursor: pointer;
+}
+#CharteringScreen input{
+    cursor: pointer;
+}
+#VesselOptions{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}#options{
+    margin-left: 40%;
+    margin-right: 40%;
+    font-size: 20px;
+    white-space: nowrap;
+}#CharterVessel{
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 45%;
+    margin-right: 45%;
+    white-space: nowrap;
+}
+
+/* Window画面の設定 */
+#WindowScreen{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+#WindowDetails{
+    width: 50%;
+}
+#WindowScreen h1 p{
+    margin-top: 8px;
+    color: white;
+    background-color: black;
+    display: block;
+    margin-bottom: 10px;
+}
+#WindowDetails .windowitems{
+    margin-top: 2px;
+    margin-bottom: 10px;
+    color: white;
+    display: block;
+    background-color: black;
+    cursor: pointer;
+    border: none;
+}
+#WindowDetails .windowitems:hover{
+    background-color: white;
+    color: red;
+}
+
+/* ヘッジ画面設定 */
+#HedgingScreen{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    height: 100%;
+    width: 100%;
+}#HedgingDetails button{
+    margin-top: 2px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+}#HedgingDetails button:hover{
+    background-color: white;
+    color: red;
+}
+/* メッセージウインドウ設定 */
+.griditemD{
+    font-size: 24px;
+}
+.griditemD button{
+    width: 250px;
+    font-size: 24px;
+    border-radius: 10px 10px 10px 10px;
+    cursor: pointer;
+}
+/* ポジション表 */
+.griditemE table{
+    width: 100%;
+    background-color: beige;
+    border: 1px solid;
+}.griditemE td{
+    font-size: 18px;
+}.FPTitle {
+    width: 60%;
+    border-right: 0.5px dotted black;
+}.positionNum{
+    text-align: right;
+}.countTotal{
+    border-top: 3px double black;
+}.griditemE h1{
+    font-size: 24px;
+    font-weight: bold;
+}
+.griditemE h2{
+    margin-top: 10px;
+    font-size: 20px;
+}.PLTitle{
+    /* border-top: 1px solid black;
+    border-bottom: 1px solid black; */
+    font-weight: bold;
+}
+.griditemE input{
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    background-color: beige;
+    text-align: right;
+    font-size: 16px;
+}#TotalPLAmount{
+    width: 100%;
+    font-size: 24px;
+    font-weight: bold;
+    border: 4px double black;
+}
+#finish{
+    width:100%;
+    font-size: 24px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.modal{
+    width: 65%;
+    height: 40%;
+    border: 1px solid #000;
+    position: fixed;
+    left: 16%;
+    transform: traslate(-50%, -50%);
+    background: url(../Images/Finish_Background.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+}
+.modal.open{
+    display: block;
+}
+#end {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    text-align: center;
+    z-index: 10;
+    font-size: 32px;
+  }
+  #Result{
+    position: absolute;
+    top: 55%;
+    left: 33%;
+    text-align: center;
+    z-index: 10;
+    font-size: 32px;
+  }
+  #note{
+    position: absolute;
+    top: 85%;
+    left: 35%;
+    text-align: center;
+    z-index: 10;
+    font-size: 12px;
+  }
+  .modal-close__wrap {
+    position: absolute;
+    right: 40px;
+    top: 20px;
+  }
+  .modal-close {
+    background: transparent;
+    border-color: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    width: 28px;
+    display: block;
+    height: 28px;
+  }
+  .modal-close span {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    background: black;
+    display: block;
+  }
+  .modal-close span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  .modal-close span:nth-child(2) {
+    transform: rotate(-45deg);
+  }
+  .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: grey;
+    opacity: .6;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: none;
+  }
+  .overlay.open{
+    display: block;
+  }
+  footer{
+    background-color: black;
+    height: 5px;
+  }
+
+
+ @media screen and (max-width:1200px) and (orientation: portrait){
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0%;
+      }
+    header p{
+        color:whitesmoke;
+        font-size: 24px;
+        text-align: center;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    #finish{
+        width:100%;
+        font-size: 15px;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+ }
+
+ @media screen and (max-width:1200px){
+    html{
+        max-width: 1100px;
+
+    }
+    header{
+        width: 1100px;
+    }
+    #marketInfo{
+        width: 1100px;
+    }
+    header p{
+        color:whitesmoke;
+        font-size: 24px;
+        text-align: center;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .grid{
+        height: 600px;
+        width: 1100px;
+    }
+    .griditemA button{
+        font-size: 12px;
+    }
+    .griditemC{
+        overflow: scroll;
+    }
+    #finish{
+        width:100%;
+        font-size: 15px;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+    .griditemE{
+        overflow: scroll;
+    }
+    footer{
+        width: 1100px
+    };
+ }
+
+
+ @media screen and (max-width:700px)  {
+    
+    header p{
+        font-size: 12px;
+    }
+    .grid{
+        height: 300px;
+    }
+    .griditemA button{
+        font-size: 12px;
+    }
+    .griditemD{
+        font-size: 16px;
+        overflow: scroll;
+    }
+}
+
+ @media screen and (max-width:500px) and (orientation: portrait) {
+    html {
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        width: 100vh;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+    
+    header p{
+        font-size: 12px;
+    }
+    .grid{
+        display:grid;
+        /* 列を5分割 */
+        grid-template-columns: 
+        repeat(5, 1fr);
+        /* 行を3分割 */
+        grid-template-rows: 
+        repeat(3, 1fr);
+        width: 100%;
+        height: 100%;
+    }
+    
+    
+    .griditemB{
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+    }
+    #navigatorImg{
+    width: 60%;
+    height: 60%;
+    display: cover;
+    }
+    .griditemC{
+        grid-column: 1 / 6;
+        grid-row: 1 / 3;
+    }
+    .griditemD{
+        grid-column: 3 / 7;
+        grid-row: 3 / 4;
+        overflow: scroll;
+    }
+
+    .griditemA{
+       display: grid;
+       grid-template-columns: 
+       repeat(5, 1fr);
+       /* 行を3分割 */
+       grid-template-rows: 
+       repeat(1, 1fr);
+       width: 100%;
+       height: 600px;
+    }
+    #TermContract{
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    #Window{
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+    #Chartering{
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+    }
+    #hedging{
+        grid-column: 4 / 5;
+        grid-row: 1 / 2;
+    }
+    #map{
+        grid-column: 5 / 6;
+        grid-row: 1 / 2;
+    }
+    .griditemA button{
+        width: auto;
+        height: 16.5px;
+        font-size: 8px;
+        font-family: Arial, Helvetica, sans-serif;
+        cursor: pointer;
+    }
+}
