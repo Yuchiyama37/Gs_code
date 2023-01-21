@@ -1,0 +1,33 @@
+#form{
+    margin-top: 40px;
+    width:70%;
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+#form input{
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    margin-left: 8px;
+    width: 80%;
+}
+#form textarea{
+    box-sizing: border-box;
+    margin-left: 8px;
+    width: 80%;
+}
+
+.tableItem{
+    vertical-align: middle;
+    margin-right: 5px;
+
+
+}
+#send{
+    display: flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    font-weight: bold;
+}
